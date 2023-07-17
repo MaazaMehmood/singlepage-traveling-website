@@ -6,7 +6,7 @@
 }
 html {
 	font-size: 10px;
-	font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	/* font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 	scroll-behavior: smooth;
 }
 a {
@@ -25,7 +25,7 @@ img {
 	object-fit: cover;
 }
 p {
-	color: black;
+	color: rgb(54, 54, 54);
 	font-size: 1.4rem;
 	margin-top: 5px;
 	line-height: 2.5rem;
@@ -42,26 +42,59 @@ p {
 	text-align: center;
 }
 .section-title span {
-	color: rgba(14, 97, 165);
+	color: rgb(4, 60, 133);
 }
 
-.cta {
+.button {
+	outline: none;
+	cursor: pointer;
+	border: none;
+	padding: 1rem 2rem;
+	position: relative;
 	display: inline-block;
-	padding: 5px;
-	color: white;
-	background-color: transparent;
-	border: 2px solid rgba(14, 97, 165, 0.76);
-	font-size: 1.5rem;
-	text-transform: uppercase;
-	letter-spacing: 0.1rem;
-	margin-top: 20px;
-	transition: 0.3s ease;
-	transition-property: background-color, color;
+	letter-spacing: 0.05rem;
+	font-weight: 700;
+	font-size: 20px;
+	border-radius: 500px;
+	overflow: hidden;
+	background: #10436d8f;
+	color: #10436ddc;
 }
-.cta:hover {
-	color: white;
-	background-color: rgba(14, 117, 165, 0.411);
+
+.button span {
+	position: relative;
+	z-index: 10;
+	transition: color 0.3s;
 }
+
+.button:hover span {
+	color: rgba(255, 255, 255, 0.959);
+	font-weight: light;
+}
+
+.button::before,
+.button::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.button::before {
+	content: "";
+	background: rgba(255, 255, 255, 0.89);
+	width: 120%;
+	left: -10%;
+	transform: skew(30deg);
+	transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.button:hover::before {
+	transform: translate3d(100%, 0, 0);
+}
+   
 .brand h1 {
 	font-size: 2rem;
 	color: white;
@@ -80,7 +113,7 @@ p {
 	height: auto;
 }
 #header .header {
-	min-height: 6vh;
+	min-height: 5vh;
 	background-color: rgba(31, 30, 30, 0.24);
 	transition: 0.3s ease background-color;
 }
@@ -96,11 +129,12 @@ p {
 #header .nav-list ul {
 	list-style: none;
 	position: absolute;
-	background-color: rgb(31, 30, 30);
+	background-color: rgba(31, 30, 30, 0.911);
 	width: 100vw;
 	height: 100vh;
 	left: 100%;
 	top: 0;
+	margin: 0rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -113,13 +147,13 @@ p {
 	left: 0%;
 }
 #header .nav-list ul a {
-	font-size: 2rem;
-	font-weight: 500;
-	letter-spacing: 0.2rem;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 0.1rem;
 	text-decoration: none;
 	color: white;
 	text-transform: uppercase;
-	padding: 15px;
+	padding: 20px;
 	display: block;
 }
 #header .nav-list ul a::after {
@@ -139,20 +173,39 @@ p {
 	letter-spacing: initial;
 }
 #header .nav-list ul li:hover a {
-	text-decoration: underline;
+	transform: scale(.9);
 	padding-bottom: 2px;
 	transition: 0.3s ease-in-out;
 }
-
+#header .nav-list ul li a span {
+	position: relative;
+	padding: 10px;
+	border-radius: 20px;
+	background: white;
+	color: #10436ddc;
+	font-size: 16px;
+	font-weight: bold;
+}
+#header .nav-list ul li a:hover span {
+	background: #10436db6;
+	color: white;
+	transition: .2s ease-in;
+}
 /* End Header section */
+
+
 
 /* main Section */
 #main {
 	background-image: url(./img/travel_site_img/banner2.jpg);
-	background-size: cover;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 	background-position: top center;
 	position: relative;
 	z-index: 1;
+	height: 90vh;
 }
 #main::after {
 	content: '';
@@ -161,8 +214,8 @@ p {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	background-color: rgba(45, 45, 46, 0.658);
-	opacity: 0.7;
+	background-color: rgba(45, 45, 46, 0.767);
+	opacity: 0.5;
 	z-index: -1;
 }
 #main .main {
@@ -174,10 +227,10 @@ p {
 #main h1 {
 	display: block;
 	width: fit-content;
-	font-size: 50px;
+	font-size: 40px;
 	position: relative;
 	color: transparent;
-	animation: text_reveal 0.5s ease forwards;
+	animation: text_reveal 0.3s ease forwards;
 	animation-delay: 1s;
 }
 #main h1:nth-child(1) {
@@ -185,9 +238,12 @@ p {
 }
 #main h1:nth-child(2) {
 	animation-delay: 2s;
+	font-size: 39px;
 }
 #main h1:nth-child(3) {
 	animation-delay: 3s;
+	font-size: 39px;
+	margin-bottom: 3rem;
 }
 #main h1 span {
 	position: absolute;
@@ -216,8 +272,8 @@ p {
 	height: 50px;
 	width: 50px;
 	display: inline-block;
-	border: 3px solid white;
-	border-radius: 50%;
+	border: transparent;
+	border-radius: 20%;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -226,15 +282,6 @@ p {
 	cursor: pointer;
 	transform: scale(0.8);
 	margin-right: 30px;
-}
-#header .hamburger:after {
-	position: absolute;
-	content: '';
-	height: 100%;
-	width: 100%;
-	border-radius: 50%;
-	border: 3px solid white;
-	animation: hamburger_puls 2s ease infinite;
 }
 #header .hamburger .bar {
 	height: 2px;
@@ -269,19 +316,19 @@ p {
 
 /* info Section */
 #info .info {
+	padding:0px 20px;
 	max-width: 1200px;
 	margin: 0 auto;
-	width: 90%;
-}
-#info .info-items {
-	/* max-width: 400px; */
 	width: 100%;
 }
-
+#info .info-items {
+	width: 100%;
+}
 #info .info-item {
 	width: 80%;
+	height: 80%;
 	padding: 20px;
-	text-align: left;
+	text-align: center;
 	border-radius: 10px;
 	padding: 30px;
 	margin: 25px;
@@ -289,19 +336,19 @@ p {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	box-shadow: 0px 0px 18px 0 #0000002c;
+	box-shadow: 0px 10px 18px 0 #20273083;
 	transition: 0.3s ease box-shadow;
 }
 #info .info-item:hover {
-	box-shadow: 0px 0px 5px 0 #0000002c;
+	box-shadow: 0px 10px 5px 0 #0000002c;
 }
-#info .icon {
-	color:midnightblue;
-	width: 70px;
+.fa-money-check-alt, .fa-location, .fa-gears {
+	color:rgba(25, 48, 112, 0.788);
 	margin: 0 auto;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 #info .info-info h1 {
+	color: rgb(4, 60, 133);
 	font-size: 2.5rem;
 	font-weight: 500;
 	margin-bottom: 15px;
@@ -311,10 +358,11 @@ p {
 
 /* Package section */
 #Package .Package {
+	/* background: rgba(237, 244, 248, 0.774); */
 	flex-direction: column;
-	max-width: 1200px;
+	width: 100%;
 	margin: 0 auto;
-	padding: 100px 0;
+	padding: 70px 20px;
 }
 #Package .Package-header h1 {
 	font-size: 40px;
@@ -334,7 +382,7 @@ p {
 	justify-content: center;
 	flex-direction: column;
 	width: 80%;
-	margin: 20px auto;
+	margin: 10px auto;
 	overflow: hidden;
 	border-radius: 10px;
 }
@@ -349,6 +397,7 @@ p {
 	color: rgb(58, 57, 57);
 }
 #Package .Package-info h1 {
+	color: rgb(4, 60, 133);
 	font-size: 4rem;
 	font-weight: 500;
 }
@@ -403,6 +452,7 @@ p {
 }
 
 #services .service-top h2{
+	color: rgb(4, 60, 133);
 	font-size: 28px;
 	font-weight: 200;
 }
@@ -421,7 +471,7 @@ p {
 	align-items: flex-start;
 	justify-content: center;
 	flex-direction: column;
-	padding: 30px;
+	padding: 50px;
 	border-radius: 10px;
 	background-image: url(./img/travel_site_img/2.jpg);
 	background-size: cover;
@@ -429,6 +479,9 @@ p {
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
+	cursor: pointer;
+	box-shadow: 0px 10px 18px 0 #2027306c;
+	transition: 0.3s ease box-shadow;
 }
 #services .service-item::after {
 	content: '';
@@ -437,8 +490,8 @@ p {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	background-image: linear-gradient(60deg, #29323ca9 0%, #485563c7 100%);
-	opacity: 0.9;
+	background-image: linear-gradient(60deg, #29323cc7 0%, #485563d7 100%);
+	opacity: 0.5;
 	z-index: -1;
 }
 #services .service-bottom .icon {
@@ -449,7 +502,7 @@ p {
 #services .service-item h2 {
 	font-size: 2rem;
 	color: white;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	text-transform: uppercase;
 }
 #services .service-item p {
@@ -457,6 +510,57 @@ p {
 	text-align: left;
 }
 /* End Services Section */
+
+
+/* offer Section */
+#offer {
+	background-image: url(./img/travel_site_img/banner1.jpg);
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position: top center;
+	height: 70vh;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+	margin: 50px 0;
+}
+#offer::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(45, 45, 46, 0.753);
+	opacity: 0.5;
+	z-index: -1;
+}
+#offer .offer {
+	display: flex;
+	flex-direction: column;
+	max-width: 1200px;
+	margin: auto;
+	padding-bottom: 80px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#offer h1 {
+	display: block;
+	width: fit-content;
+	font-size: 28px;
+	position: relative;
+	color: transparent;
+	animation: text_reveal 0.5s ease forwards;
+	animation-delay: 1s;
+}
+#offer h1:nth-child(1) {
+	animation-delay: 1s;
+	margin-bottom: 3rem;
+}
+/* End offer Section */
 
 
 /* About Section */
@@ -475,6 +579,7 @@ p {
 	width: 100%;
 }
 #about .col-right h2 {
+	color: rgb(4, 60, 133);
 	font-size: 1.8rem;
 	font-weight: 500;
 	letter-spacing: 0.2rem;
@@ -508,57 +613,14 @@ p {
 /* End About Section */
 
 
-/* offer Section */
-#offer {
-	background-image: url(./img/travel_site_img/banner1.jpg);
-	height: 85vh;
-	background-size: cover;
-	background-position: top center;
-	position: relative;
-	z-index: 1;
-}
-#offer::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	background-color: rgba(45, 45, 46, 0.658);
-	opacity: 0.7;
-	z-index: -1;
-}
-#offer .offer {
-	display: flex;
-	flex-direction: column;
-	max-width: 1200px;
-	margin: auto;
-	padding: 80px;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
-#offer h1 {
-	display: block;
-	width: fit-content;
-	font-size: 28px;
-	position: relative;
-	color: transparent;
-	animation: text_reveal 0.5s ease forwards;
-	animation-delay: 1s;
-}
-#offer h1:nth-child(1) {
-	animation-delay: 1s;
-}
-/* End offer Section */
-
 /* Footer */
 #footer {
-	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	background-image: linear-gradient(60deg, #13273f 0%, rgba(9, 83, 117, 0.603) 100%);
 }
 #footer .footer {
 	min-height: 200px;
 	flex-direction: column;
+	margin-top: 50px;
 	padding-top: 50px;
 	padding-bottom: 10px;
 }
@@ -572,23 +634,17 @@ p {
 }
 #footer .social-icon {
 	display: flex;
-	margin-bottom: 30px;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 10px 0;
 }
-#footer .social-item {
-	height: 50px;
-	width: 50px;
-	margin: 0 5px;
-}
-#footer .social-item img {
-	filter: grayscale(1);
-	transition: 0.3s ease filter;
-}
-#footer .social-item:hover img {
-	filter: grayscale(0);
+#footer .social-item a i {
+	margin: 20px;
 }
 #footer p {
 	color: white;
-	font-size: 1.3rem;
+	font-size: 15px;
+	margin: 1rem;
 }
 /* End Footer */
 
